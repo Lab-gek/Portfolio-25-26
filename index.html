@@ -114,6 +114,7 @@
         .carousel-card .card-right {
             flex: 1 1 auto;
             min-width: 0; /* allow proper text wrapping */
+            text-align: center;
         }
 
         /* title in the right side: show whole title and wrap nicely */
@@ -124,11 +125,13 @@
             line-height: 1.2;
             word-break: break-word;
             overflow-wrap: anywhere;
+
         }
         .carousel-card .card-sub {
             margin-top: 6px;
             color: #444;
             font-size: 0.95em;
+
         }
 
         .carousel-inner-content {
@@ -379,6 +382,31 @@
             font-size: 0.95em;
         }
 
+        /* carousel indicators (dots) */
+        .carousel-indicators {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 12px;
+            display: flex;
+            gap: 8px;
+            z-index: 20;
+        }
+
+        .carousel-indicators .dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.6);
+            cursor: pointer;
+            transition: transform 0.15s, background 0.15s;
+        }
+
+        .carousel-indicators .dot.active {
+            background: #fff;
+            transform: scale(1.25);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
+        }
 
     </style>
 </head>
@@ -397,6 +425,9 @@
             </div>
             <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
             <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
+
+            <!-- indicators (rendered dynamically) -->
+            <div class="carousel-indicators" id="carouselIndicators" aria-hidden="false"></div>
         </div>
 
         <!-- PROJECTS GRID -->
@@ -431,6 +462,9 @@
         </div>
     </div>
 
+    <!-- load data (new) -->
+    <script src="data.js"></script>
+
     <script>
         /* ==========================
            SCRIPT (top-down, documented)
@@ -441,59 +475,6 @@
            4) Helpers (apply carousel slides)
            5) init() — single entry point
            ========================== */
-
-        // 1) Round
-        const carouselSlides = [
-            // image{ type: 'image', src: 'assets/carousel/slide1.jpg', caption: 'NRG Pallas model' },
-            // card{ type: 'card', card: { title: 'Featured Project', subtitle: 'NRG Pallas', summary: 'Ontwerpen en modeleren van een museum in Blender. Klik voor meer.' , projectIndex: 0 } },
-            { type: 'image', src: 'Assets/img/Ieper_1.jpg', caption: '' },
-            { type: 'card', card: { title: 'Weer', subtitle: 'Het werkte weer', summary: 'Een weer app voor informatica met informatie van uit buienradar', projectIndex: 3 } }
-        ];
-        const projects = [
-            {
-                title: "NRG Pallas",
-                description: "Ontwerpen en modeleren van een museum",
-                tags: ["Ontwerpen", "Blender", "O&O VWO 5" , "Lifestyle en design"],
-                details: "Een project waarbij we een museum hebben ontworpen en gemodelleerd in Blender, met de focus op educatie en beleving rond om Kernenergie."
-            },
-            {
-                title: "Anthura",
-                description: "Idee ontwikkelen voor het 'veilig' schoon maken van de binnen kant van een glaze kas",
-                tags: ["Concept ontwikkelen", "Ontwerpen", "Technish tekenen", "O&O VWO 4"],
-                details: "Created a responsive weather app that fetches real-time data using weather APIs and displays current conditions and forecasts."
-            },
-            {
-                title: "Task Manager",
-                description: "Collaborative task management tool for teams",
-                tags: ["Vue.js", "Firebase", "Tailwind"],
-                details: "Developed a task management application with real-time collaboration features, drag-and-drop functionality, and team workspace support."
-            },
-            {
-                title: "Weer app",
-                description: "Het maken van een weer app met de API van buienradar.",
-                tags: ["HTML", "CSS", "JavaScript", "Infromatica"],
-                details: "Het ontwikkelen van een weer app die overzichtelijk de weersverwachting toont. En wat extra functies <a href='https://skelter-studio-s.github.io/weer-app/'> Website</a> "
-            }
-        ];
-
-        // timelineData and hobbies arrays (unchanged content)
-        const timelineData = [
-            { year: "2025 - 2026 ", text: "VWO eindexamen periode en Meesterproef" },
-            { year: "2024 - 2025", text: "O&O project Anthura en NRG-PALLAS" },
-            { year: "2023 - 2024", text: "O&O Project Ursem modulair bouw en Feadship" }
-        ];
-
-        const hobbies = [
-            { title: "Blender / 3D Modeleren", desc: "Experimenteren met verschillende onder delen van 3d modeleren en ontwerpen." },
-            { title: "Fotografie", desc: "Landschappen en familie, zo ben ik al een paar jaar hof leverancier voor de familie kerst kaart." },
-            { title: "Fietsen", desc: "Long rides in nature to recharge and get new ideas."},
-            { title: "Zwemen", desc: "Lekker twee keer in de week in een zwembad zwemmen doet mij geen kwaad." },
-            { title: "Evenementen ", desc: "Afgelopen paar jaren heb ik veel plezier gevonden om op school Evenementen mee te organiseren." }
-        ];
-
-        // New: carouselSlides describes each slide - either an image or a card
-
-
         // 2) RENDERERS
         function renderProjects() {
             const grid = document.getElementById('projectsGrid');
@@ -536,15 +517,23 @@
         // 3) UI ACTIONS
         let currentCarouselIndex = 0;
 
-        function moveCarousel(direction) {
+        function moveCarousel(directionOrIndex) {
             const container = document.getElementById('carouselContainer');
             const items = container.querySelectorAll('.carousel-item').length;
-            currentCarouselIndex += direction;
-            
+            if (!items) return;
+
+            // accept either a direction (-1 / 1) or a direct index (number >= 0)
+            if (typeof directionOrIndex === 'number' && (directionOrIndex === 1 || directionOrIndex === -1)) {
+                currentCarouselIndex += directionOrIndex;
+            } else if (typeof directionOrIndex === 'number') {
+                currentCarouselIndex = directionOrIndex;
+            }
+
             if (currentCarouselIndex >= items) currentCarouselIndex = 0;
             if (currentCarouselIndex < 0) currentCarouselIndex = items - 1;
-            
+
             container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            updateActiveIndicator();
         }
 
         function openModal(index) {
@@ -569,29 +558,59 @@
             }
         }
 
-        // 4) HELPERS
-        // Render slides into #carouselContainer. Each slide can be type 'image' or 'card'.
+        // 4) HELPERS (additional indicator helpers)
+
+        // small helper to avoid accidental HTML injection when rendering card text
+        function escapeHtml(str) {
+            return String(str || '')
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+
+        function renderCarouselIndicators() {
+            const container = document.getElementById('carouselIndicators');
+            container.innerHTML = carouselSlides.map((_, i) => {
+                return `<div class="dot" data-index="${i}" onclick="moveToSlide(${i})" aria-label="Go to slide ${i+1}"></div>`;
+            }).join('');
+            updateActiveIndicator();
+        }
+
+        function updateActiveIndicator() {
+            const dots = document.querySelectorAll('#carouselIndicators .dot');
+            dots.forEach(d => d.classList.remove('active'));
+            const active = dots[currentCarouselIndex];
+            if (active) active.classList.add('active');
+        }
+
+        function moveToSlide(i) {
+            currentCarouselIndex = i;
+            const container = document.getElementById('carouselContainer');
+            container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            updateActiveIndicator();
+        }
+
+        // tweak applyCarouselSlides to set data-index attribute on items (so it's clear how many are present)
         function applyCarouselSlides() {
             const container = document.getElementById('carouselContainer');
             if (!container) return;
             container.innerHTML = carouselSlides.map((s, i) => {
                 if (s.type === 'image' && s.src) {
-                    // image slide: use background-image + optional caption
-                    const cap = s.caption ? `<div class="carousel-inner-content" style="font-size:1.8em;font-weight:bold;">${s.caption}</div>` : '';
+                    const cap = s.caption ? `<div class="carousel-inner-content" style="font-size:1.8em;font-weight:bold;">${escapeHtml(s.caption)}</div>` : '';
                     return `
-                        <div class="carousel-item carousel-item-bg" style="background-image: url('${s.src}')">
+                        <div class="carousel-item carousel-item-bg" data-index="${i}" style="background-image: url('${s.src}')">
                             ${cap}
                         </div>
                     `;
                 } else if (s.type === 'card' && s.card) {
                     const c = s.card;
-                    // show a single card (not nested). left: initial, right: full title + subtitle + summary
-                    const initial = (c.title && c.title.length) ? c.title.trim().charAt(0) : 'C';
                     const openAttr = (typeof c.projectIndex === 'number') ? `onclick="openModal(${c.projectIndex})"` : '';
                     return `
-                        <div class="carousel-item">
+                        <div class="carousel-item" data-index="${i}">
                             <div class="carousel-card" ${openAttr} role="button" tabindex="0">
-                                <div class="card-left">${initial}</div>
+
                                 <div class="card-right">
                                     <div class="card-title">${escapeHtml(c.title || '')}</div>
                                     <div class="card-sub">${escapeHtml(c.subtitle || '')}</div>
@@ -601,33 +620,27 @@
                         </div>
                     `;
                 } else {
-                    // fallback simple slide
-                    return `<div class="carousel-item"><div class="carousel-inner-content">Slide ${i+1}</div></div>`;
+                    return `<div class="carousel-item" data-index="${i}"><div class="carousel-inner-content">Slide ${i+1}</div></div>`;
                 }
             }).join('');
             // reset transform after re-render
-            container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            const containerEl = document.getElementById('carouselContainer');
+            containerEl.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            // also re-render indicators since number of slides may have changed
+            renderCarouselIndicators();
         }
 
-        // small helper to avoid accidental HTML injection when rendering card text
-        function escapeHtml(str) {
-            return String(str)
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        // 5) INIT
+        // 5) INIT (call indicator renderer)
         function init() {
             renderProjects();
             renderTimeline();
             renderHobbies();
             applyCarouselSlides();
+            renderCarouselIndicators();
             // ensure carousel shows correct position on load
             const container = document.getElementById('carouselContainer');
             container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
+            updateActiveIndicator();
         }
 
         // run init
