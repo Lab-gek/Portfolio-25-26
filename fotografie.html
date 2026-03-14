@@ -28,18 +28,9 @@
     <p class="page-desc">Een selectie van mijn eigen landschaps- en macro­foto's — gemaakt tijdens fietstochten, uitstapjes en thuis.</p>
   </header>
 
-  <!-- GALERIJ (Criterium 6 — eigen bewijs) -->
-  <div class="gallery-grid" aria-label="Fotogalerij">
-    <img src="Assets/img/Ieper_1.jpg"
-         alt="Gezicht over Ieper met historische gebouwen en groen"
-         loading="lazy">
-    <img src="Assets/img/DSC_0170.jpg"
-         alt="Macro fotografie van een detail in de natuur"
-         loading="lazy">
-    <img src="Assets/img/DSC_0680.jpg"
-         alt="Landschapsfoto met perspectief en diepte"
-         loading="lazy">
-  </div>
+  <!-- GALERIJ — gevuld vanuit de fotos array in data.js
+       Voeg foto's toe door nieuwe regels toe te voegen aan fotos[] in data.js -->
+  <div class="gallery-grid" aria-label="Fotogalerij" id="render-fotos"></div>
 
   <div style="padding: 0 28px 60px; max-width: 680px;">
     <p class="page-eyebrow" style="margin-bottom: 8px;">Over deze foto's</p>
@@ -49,9 +40,14 @@
   </div>
 
   <footer>
-    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
+    <p id="render-footer"></p>
   </footer>
 
+  <script src="data.js"></script>
   <script src="script.js"></script>
+  <script>
+    renderFotos();
+    document.getElementById('render-footer').textContent = siteConfig.footerTekst;
+  </script>
 </body>
 </html>
