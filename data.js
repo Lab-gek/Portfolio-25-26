@@ -35,7 +35,8 @@ const projects = [
     },
     {title: "Ursem Modulair Bouw", 
     description: "Het efficenter maken van hun product opslag door het bieden van een oplossing.",
-    tags: [""]
+    tags: ["Kritisch denken", "O&O VWO 4"],
+    details: ""
     }
 ];
 
