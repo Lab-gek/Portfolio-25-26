@@ -1,650 +1,120 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portfolio</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 40px 20px;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        header {
-            text-align: center;
-            color: white;
-            margin-bottom: 60px;
-        }
-
-        h1 {
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-        .carousel {
-            position: relative;
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-            margin-bottom: 60px;
-        }
-
-        .carousel-container {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
-        }
-
-        .carousel-item {
-            min-width: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 400px;
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            font-size: 2em;
-            font-weight: bold;
-        }
-
-        /* Carousel background helper:
-           Use class .carousel-item-bg or inline style="background-image: url('...')"
-           to show an image behind the carousel item content. */
-        .carousel-item-bg {
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
-            color: white;
-        }
-
-        /* optional overlay to keep text readable */
-        .carousel-item-bg::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to bottom right, rgba(0,0,0,0.05), rgba(0,0,0,0.15));
-            pointer-events: none;
-        }
-
-        /* keep existing carousel content above overlay */
-        .carousel-item-bg > * { position: relative; z-index: 1; }
-
-        /* New: carousel card styling (used when slide.type === 'card') */
-        .carousel-card {
-            background: rgba(255,255,255,0.97);
-            color: #222;
-            border-radius: 10px;
-            padding: 18px;
-            max-width: 860px;
-            width: calc(100% - 40px);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.12);
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-
-        .carousel-card .card-left {
-            flex: 0 0 96px;
-            height: 96px;
-            min-width: 96px;
-            border-radius: 8px;
-            background: linear-gradient(135deg,#667eea,#764ba2);
-            display:flex;
-            align-items:center;
-            justify-content:center;
-            color:white;
-            font-weight:700;
-            font-size:1.6em;
-            text-transform:uppercase;
-        }
-
-        .carousel-card .card-right {
-            flex: 1 1 auto;
-            min-width: 0; /* allow proper text wrapping */
-            text-align: center;
-        }
-
-        /* title in the right side: show whole title and wrap nicely */
-        .carousel-card .card-title {
-            font-weight: 800;
-            color: #222;
-            font-size: 1.15em;
-            line-height: 1.2;
-            word-break: break-word;
-            overflow-wrap: anywhere;
-
-        }
-        .carousel-card .card-sub {
-            margin-top: 6px;
-            color: #444;
-            font-size: 0.95em;
-
-        }
-
-        .carousel-inner-content {
-            position: relative; /* ensures content sits above overlays for image slides */
-            z-index: 1;
-        }
-
-        .carousel-btn {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0,0,0,0.5);
-            color: white;
-            border: none;
-            font-size: 2em;
-            padding: 20px 25px;
-            cursor: pointer;
-            z-index: 10;
-            transition: background 0.3s;
-        }
-
-        .carousel-btn:hover {
-            background: #6775de;
-        }
-
-        .carousel-btn.prev {
-            left: 20px;
-            border-radius: 10px;
-        }
-
-        .carousel-btn.next {
-            right: 20px;
-            border-radius: 10px;
-        }
-        .carousel-card,
-        .carousel-item[onclick] {
-            cursor: pointer; /* show click icon on hover */
-            transition: transform 0.18s ease, box-shadow 0.18s ease;
-        }
-
-        .carousel-card:hover,
-        .carousel-item[onclick]:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 18px 40px rgba(0,0,0,0.16);
-        }
-
-        .carousel-card:focus,
-        .carousel-item[onclick]:focus {
-            outline: 3px solid rgba(102,126,234,0.25);
-            outline-offset: 4px;
-        }
-
-        /* PROJECTS GRID */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-            cursor: pointer;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            padding: 20px;
-            font-size: 1.5em;
-            font-weight: bold;
-        }
-
-        .card-body {
-            padding: 20px;
-        }
-
-        .card-description {
-            color: #333;
-            margin-bottom: 15px;
-            line-height: 1.6;
-        }
-
-        .card-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 8px;
-            margin-bottom: 15px;
-        }
-
-        .tag {
-            background: #e0e7ff;
-            color: #667eea;
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.85em;
-        }
-
-        .card-footer {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn {
-            flex: 1;
-            padding: 10px 15px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: background 0.3s;
-        }
-
-        .btn-primary {
-            background: #667eea;
-            color: white;
-        }
-
-        .btn-primary:hover {
-            background: #5568d3;
-        }
-
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 100;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.5);
-        }
-
-        .modal-content {
-            background: white;
-            margin: 5% auto;
-            padding: 30px;
-            border-radius: 10px;
-            max-width: 600px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-        }
-
-        .modal-header {
-            font-size: 2em;
-            font-weight: bold;
-            margin-bottom: 20px;
-            color: #667eea;
-        }
-
-        .close-btn {
-            float: right;
-            font-size: 2em;
-            cursor: pointer;
-            color: #aaa;
-            transition: color 0.3s;
-        }
-
-        .close-btn:hover {
-            color: #000;
-        }
-
-        /* Timeline styles */
-        .timeline {
-            background: rgba(255,255,255,0.06);
-            padding: 30px;
-            border-radius: 10px;
-            color: white;
-            margin-bottom: 40px;
-        }
-
-        .timeline-header {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: #fff;
-        }
-
-        .timeline-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-
-        .timeline-item {
-            background: rgba(255,255,255,0.06);
-            border-left: 4px solid rgba(255,255,255,0.15);
-            padding: 12px 16px;
-            border-radius: 6px;
-            display: flex;
-            gap: 12px;
-            align-items: flex-start;
-        }
-
-        .timeline-year {
-            min-width: 72px;
-            font-weight: bold;
-            color: #e6e6ff;
-        }
-
-        .timeline-content {
-            color: #f0f0ff;
-            line-height: 1.4;
-        }
-
-        /* Hobbies styles */
-        .hobbies {
-            margin-bottom: 60px;
-        }
-
-        .hobbies-header {
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            color: white;
-        }
-
-        .hobbies-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-        }
-
-        .hobby-card {
-            background: white;
-            padding: 16px;
-            border-radius: 8px;
-            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            min-height: 110px;
-        }
-
-        .hobby-title {
-            font-weight: bold;
-            color: #333;
-        }
-
-        .hobby-desc {
-            color: #555;
-            font-size: 0.95em;
-        }
-
-        /* carousel indicators (dots) */
-        .carousel-indicators {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 12px;
-            display: flex;
-            gap: 8px;
-            z-index: 20;
-        }
-
-        .carousel-indicators .dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.6);
-            cursor: pointer;
-            transition: transform 0.15s, background 0.15s;
-        }
-
-        .carousel-indicators .dot.active {
-            background: #fff;
-            transform: scale(1.25);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.18);
-        }
-
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thijmen van Groenestijn — Over mij</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="container">
-        <!-- HEADER -->
-        <header>
-            <h1>Thijmen van Groenestijn</h1>
-            <p>Wie ik ben, Wat ik doe, Wat ik heb gedaan.</p>
-        </header>
 
-        <!-- CAROUSEL (visual showcase) -->
-        <div class="carousel">
-            <div class="carousel-container" id="carouselContainer">
-                <!-- slides will be rendered by JS (image or card per slide) -->
-            </div>
-            <button class="carousel-btn prev" onclick="moveCarousel(-1)">❮</button>
-            <button class="carousel-btn next" onclick="moveCarousel(1)">❯</button>
-
-            <!-- indicators (rendered dynamically) -->
-            <div class="carousel-indicators" id="carouselIndicators" aria-hidden="false"></div>
-        </div>
-
-        <!-- PROJECTS GRID -->
-        <div class="projects-grid" id="projectsGrid"></div>
-
-        <!-- TIMELINE -->
-        <section class="timeline" id="timelineSection" aria-labelledby="timelineTitle">
-            <div class="timeline-header" id="timelineTitle">Tijd Lijn</div>
-            <div class="timeline-list" id="timelineContainer">
-                <!-- rendered timeline items -->
-            </div>
-        </section>
-
-        <!-- HOBBIES -->
-        <section class="hobbies" id="hobbiesSection" aria-labelledby="hobbiesTitle">
-            <div class="hobbies-header" id="hobbiesTitle">Hobbies</div>
-            <div class="hobbies-grid" id="hobbiesContainer">
-                <!-- rendered hobby cards -->
-            </div>
-        </section>
-
+  <nav class="topbar">
+    <a class="logo" href="index.html">Thijmen van Groenestijn</a>
+    <div class="nav-links">
+      <a href="index.html" class="active">Over mij</a>
+      <a href="opdrachten.html">Opdrachten &amp; projecten</a>
+      <a href="skills.html">Skills</a>
+      <a href="fotografie.html">Fotografie</a>
+      <a href="pop.html">POP</a>
     </div>
-<footer>
-    <p>Thijmen van Groenestijn 2025</p>
-</footer>
-    <!-- MODAL -->
-    <div id="projectModal" class="modal">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <div class="modal-header" id="modalTitle"></div>
-            <div id="modalBody"></div>
-        </div>
+  </nav>
+
+  <!-- HERO (Criterium 1 & 2) -->
+  <section class="hero" aria-label="Introductie">
+    <div class="hero-photo-placeholder" aria-hidden="true">T</div>
+    <div class="hero-text">
+      <p class="page-eyebrow">Over mij</p>
+      <h1 class="hero-name">Thijmen van Groenestijn</h1>
+      <p class="hero-tagline">VWO bovenbouw student · Ontwerper · Fotograaf · Muzikant</p>
+      <p class="hero-quote">
+        "Ik leer het liefst door iets écht te maken — van een 3D-model tot een evenement."
+      </p>
     </div>
+  </section>
 
-    <!-- load data (new) -->
-    <script src="data.js"></script>
+  <!-- QUICK FACTS (Criterium 2) -->
+  <div class="quick-facts" aria-label="Snelle feiten">
+    <div class="fact-card">
+      <div class="fact-label">School</div>
+      <div class="fact-value">VWO bovenbouw</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Profiel</div>
+      <div class="fact-value">Natuur &amp; Techniek</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Vakken</div>
+      <div class="fact-value">Informatica · O&amp;O · Lifestyle &amp; Design</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Woonplaats</div>
+      <div class="fact-value">Nederland</div>
+    </div>
+    <div class="fact-card">
+      <div class="fact-label">Ambitie</div>
+      <div class="fact-value">Techniek &amp; Ontwerp combineren</div>
+    </div>
+  </div>
 
-    <script>
-        /* ==========================
-           SCRIPT (top-down, documented)
-           Sections:
-           1) Round 
-           2) Renderers (projects, timeline, hobbies)
-           3) UI actions (carousel, modal)
-           4) Helpers (apply carousel slides)
-           5) init() — single entry point
-           ========================== */
-        // 2) RENDERERS
-        function renderProjects() {
-            const grid = document.getElementById('projectsGrid');
-            grid.innerHTML = projects.map((project, index) => `
-                <div class="project-card" onclick="openModal(${index})">
-                    <div class="card-header">${project.title}</div>
-                    <div class="card-body">
-                        <div class="card-description">${project.description}</div>
-                        <div class="card-tags">
-                            ${project.tags.map(tag => `<span class="tag">${tag}</span>`).join('')}
-                        </div>
-                        <div class="card-footer">
-                            <button class="btn btn-primary">Zie meer</button>
-                        </div>
-                    </div>
-                </div>
-            `).join('');
-        }
+  <!-- WIE BEN IK (Criterium 2) -->
+  <div style="padding: 0 28px; max-width: 720px; margin-bottom: 40px;">
+    <p class="page-eyebrow" style="margin-bottom: 8px;">Wie ben ik?</p>
+    <p style="font-size: 15px; color: var(--text); line-height: 1.75;">
+      Ik ben Thijmen, een VWO-student die van aanpakken houdt. Of het nu gaat om het 3D-modelleren van een museumgebouw, het bouwen van een weer-app, of het organiseren van schoolevenementen — ik zoek altijd de praktische aanpak. Ik hou ervan om abstracte ideeën om te zetten naar iets tastbaars: een model, een website, een plan.
+    </p>
+    <p style="font-size: 15px; color: var(--text); line-height: 1.75; margin-top: 12px;">
+      Buiten school fotografeer ik graag landschappen en macro-onderwerpen, speel ik trompet in de plaatselijke muziekvereniging en fiets ik regelmatig lange afstanden door de natuur. Die combinatie van techniek, creativiteit en buiten zijn maakt mij wie ik ben.
+    </p>
+  </div>
 
-        function renderTimeline() {
-            const container = document.getElementById('timelineContainer');
-            container.innerHTML = timelineData.map(item => `
-                <div class="timeline-item">
-                    <div class="timeline-year">${item.year}</div>
-                    <div class="timeline-content">${item.text}</div>
-                </div>
-            `).join('');
-        }
+  <!-- HOBBIES (Criterium 2) -->
+  <h2 class="section-title">Hobbies &amp; interesses</h2>
+  <div class="hobbies-grid">
+    <div class="hobby-card">
+      <div class="hobby-title">🎨 Blender / 3D Modelleren</div>
+      <div class="hobby-desc">Experimenteren met verschillende onderdelen van 3D-modelleren en ontwerpen.</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-title">📷 Fotografie</div>
+      <div class="hobby-desc">Landschappen en familie — al een paar jaar hof­leverancier voor de familie­kerstkaart.</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-title">🚴 Fietsen</div>
+      <div class="hobby-desc">Lange ritten door de natuur om op te laden en nieuwe ideeën op te doen.</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-title">🏊 Zwemmen</div>
+      <div class="hobby-desc">Twee keer per week naar het zwembad — gewoon lekker bewegen.</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-title">🎉 Evenementen</div>
+      <div class="hobby-desc">De afgelopen jaren veel plezier gevonden in het mee-organiseren van schoolevenementen.</div>
+    </div>
+    <div class="hobby-card">
+      <div class="hobby-title">🎺 Muziek spelen</div>
+      <div class="hobby-desc">Trompet spelen in de lokale muziekvereniging en daar een paar keer per jaar mee optreden.</div>
+    </div>
+  </div>
 
-        function renderHobbies() {
-            const container = document.getElementById('hobbiesContainer');
-            container.innerHTML = hobbies.map(h => `
-                <div class="hobby-card" tabindex="0">
-                    <div class="hobby-title">${h.title}</div>
-                    <div class="hobby-desc">${h.desc}</div>
-                </div>
-            `).join('');
-        }
+  <!-- FOTO TEASER -->
+  <h2 class="section-title">Eigen foto's</h2>
+  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 28px 60px;">
+    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
+      <img src="Assets/img/Ieper_1.jpg" alt="Foto van Ieper" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+    </a>
+    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
+      <img src="Assets/img/DSC_0170.jpg" alt="Macro fotografie" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+    </a>
+    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
+      <img src="Assets/img/DSC_0680.jpg" alt="Landschapsfoto" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
+    </a>
+  </div>
 
-        // 3) UI ACTIONS
-        let currentCarouselIndex = 0;
+  <footer>
+    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
+  </footer>
 
-        function moveCarousel(directionOrIndex) {
-            const container = document.getElementById('carouselContainer');
-            const items = container.querySelectorAll('.carousel-item').length;
-            if (!items) return;
-
-            // accept either a direction (-1 / 1) or a direct index (number >= 0)
-            if (typeof directionOrIndex === 'number' && (directionOrIndex === 1 || directionOrIndex === -1)) {
-                currentCarouselIndex += directionOrIndex;
-            } else if (typeof directionOrIndex === 'number') {
-                currentCarouselIndex = directionOrIndex;
-            }
-
-            if (currentCarouselIndex >= items) currentCarouselIndex = 0;
-            if (currentCarouselIndex < 0) currentCarouselIndex = items - 1;
-
-            container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-            updateActiveIndicator();
-        }
-
-        function openModal(index) {
-            const project = projects[index];
-            document.getElementById('modalTitle').textContent = project.title;
-            document.getElementById('modalBody').innerHTML = `
-                <p><strong>Beschrijving:</strong> ${project.description}</p>
-                <p style="margin-top: 15px;"><strong>Details:</strong> ${project.details}</p>
-                <p style="margin-top: 15px;"><strong>Tags:</strong> ${project.tags.join(', ')}</p>
-            `;
-            document.getElementById('projectModal').style.display = 'block';
-        }
-
-        function closeModal() {
-            document.getElementById('projectModal').style.display = 'none';
-        }
-
-        window.onclick = function(event) {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                modal.style.display = 'none';
-            }
-        }
-
-        // 4) HELPERS (additional indicator helpers)
-
-        // small helper to avoid accidental HTML injection when rendering card text
-        function escapeHtml(str) {
-            return String(str || '')
-                .replace(/&/g, '&amp;')
-                .replace(/</g, '&lt;')
-                .replace(/>/g, '&gt;')
-                .replace(/"/g, '&quot;')
-                .replace(/'/g, '&#39;');
-        }
-
-        function renderCarouselIndicators() {
-            const container = document.getElementById('carouselIndicators');
-            container.innerHTML = carouselSlides.map((_, i) => {
-                return `<div class="dot" data-index="${i}" onclick="moveToSlide(${i})" aria-label="Go to slide ${i+1}"></div>`;
-            }).join('');
-            updateActiveIndicator();
-        }
-
-        function updateActiveIndicator() {
-            const dots = document.querySelectorAll('#carouselIndicators .dot');
-            dots.forEach(d => d.classList.remove('active'));
-            const active = dots[currentCarouselIndex];
-            if (active) active.classList.add('active');
-        }
-
-        function moveToSlide(i) {
-            currentCarouselIndex = i;
-            const container = document.getElementById('carouselContainer');
-            container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-            updateActiveIndicator();
-        }
-
-        // tweak applyCarouselSlides to set data-index attribute on items (so it's clear how many are present)
-        function applyCarouselSlides() {
-            const container = document.getElementById('carouselContainer');
-            if (!container) return;
-            container.innerHTML = carouselSlides.map((s, i) => {
-                if (s.type === 'image' && s.src) {
-                    const cap = s.caption ? `<div class="carousel-inner-content" style="font-size:1.8em;font-weight:bold;">${escapeHtml(s.caption)}</div>` : '';
-                    return `
-                        <div class="carousel-item carousel-item-bg" data-index="${i}" style="background-image: url('${s.src}')">
-                            ${cap}
-                        </div>
-                    `;
-                } else if (s.type === 'card' && s.card) {
-                    const c = s.card;
-                    const openAttr = (typeof c.projectIndex === 'number') ? `onclick="openModal(${c.projectIndex})"` : '';
-                    return `
-                        <div class="carousel-item" data-index="${i}">
-                            <div class="carousel-card" ${openAttr} role="button" tabindex="0">
-
-                                <div class="card-right">
-                                    <div class="card-title">${escapeHtml(c.title || '')}</div>
-                                    <div class="card-sub">${escapeHtml(c.subtitle || '')}</div>
-                                    <div style="margin-top:8px;color:#444;font-size:0.95em;">${escapeHtml(c.summary || '')}</div>
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    return `<div class="carousel-item" data-index="${i}"><div class="carousel-inner-content">Slide ${i+1}</div></div>`;
-                }
-            }).join('');
-            // reset transform after re-render
-            const containerEl = document.getElementById('carouselContainer');
-            containerEl.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-            // also re-render indicators since number of slides may have changed
-            renderCarouselIndicators();
-        }
-
-        // 5) INIT (call indicator renderer)
-        function init() {
-            renderProjects();
-            renderTimeline();
-            renderHobbies();
-            applyCarouselSlides();
-            renderCarouselIndicators();
-            // ensure carousel shows correct position on load
-            const container = document.getElementById('carouselContainer');
-            container.style.transform = `translateX(-${currentCarouselIndex * 100}%)`;
-            updateActiveIndicator();
-        }
-
-        // run init
-        init();
-    </script>
 </body>
 </html>

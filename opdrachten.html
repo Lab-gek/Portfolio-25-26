@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thijmen van Groenestijn — Opdrachten &amp; Projecten</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <nav class="topbar">
+    <a class="logo" href="index.html">Thijmen van Groenestijn</a>
+    <div class="nav-links">
+      <a href="index.html">Over mij</a>
+      <a href="opdrachten.html" class="active">Opdrachten &amp; projecten</a>
+      <a href="skills.html">Skills</a>
+      <a href="fotografie.html">Fotografie</a>
+      <a href="pop.html">POP</a>
+    </div>
+  </nav>
+
+  <!-- PAGINAKOP -->
+  <header class="page-hero">
+    <p class="page-eyebrow">Wat ik doe &amp; maak</p>
+    <h1 class="page-title">Opdrachten &amp; projecten</h1>
+    <p class="page-desc">Een overzicht van alle school­opdrachten en persoonlijke projecten — van 3D-modellen tot web­apps en meer.</p>
+  </header>
+
+  <!-- FILTERRIJ (Criterium 3) -->
+  <div class="filter-row" role="toolbar" aria-label="Filter projecten">
+    <button class="filter-btn active" onclick="filter('all', this)">Alles</button>
+    <button class="filter-btn" onclick="filter('school', this)">School</button>
+    <button class="filter-btn" onclick="filter('personal', this)">Persoonlijk</button>
+    <button class="filter-btn" onclick="filter('tech', this)">Tech &amp; code</button>
+    <button class="filter-btn" onclick="filter('nature', this)">Natuur &amp; leven</button>
+    <button class="filter-btn" onclick="filter('event', this)">Events</button>
+    <button class="filter-btn" onclick="filter('plan', this)">Planning</button>
+  </div>
+
+  <!-- KAARTGRID (Criterium 3 & 4) -->
+  <main class="grid" id="grid">
+
+    <!-- Kaart 1: NRG Pallas -->
+    <div class="card" data-tags="school nature plan">
+
+      <div class="card-img">
+        <img src="Assets/img/DSC_0680.jpg"
+             alt="3D-model van het NRG Pallas museum in Blender"
+             loading="lazy">
+        <div class="photo-label">3D-model in Blender</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-school">School</span>
+          <span class="badge badge-world">Lifestyle &amp; Design · O&amp;O VWO 5</span>
+        </div>
+        <h3 class="card-title">NRG Pallas — Museum ontwerp</h3>
+        <p class="card-desc">
+          Ontwerpen en 3D-modelleren van een museum voor de NRG Pallas opdracht. Ik leerde nieuwe tools en workflows in Blender en ontdekte de grenzen van het programma voor technische modellen.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: het gedetailleerde 3D-model dat ik zelfstandig heb gebouwd</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r1', this)"
+                  aria-expanded="false"
+                  aria-controls="r1">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r1" hidden>
+        <p>"Voor deze O&amp;O-opdracht heb ik me volledig gericht op het 3D-modelleren in Blender. Wat goed ging: ik ontdekte nieuwe sneltoetsen en modelling-tools die mijn tempo verhoogden. Wat ik leerde: Blender is niet ideaal voor technische modellen — een CAD-programma zoals Fusion 360 zou preciezer zijn. Ik was verrast hoe positief de opdrachtgever reageerde op het eindresultaat. Volgende keer wil ik eerder een technisch tekening als referentie maken."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">3D-modelleren</span>
+          <span class="refl-tag">Samenwerken</span>
+          <span class="refl-tag">Reflecteren</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaart 2: Anthura -->
+    <div class="card" data-tags="school nature plan">
+
+      <div class="card-img">
+        <div class="card-img-placeholder">🌷 Anthura</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-school">School</span>
+          <span class="badge badge-world">Natuur &amp; Techniek · O&amp;O VWO 4</span>
+        </div>
+        <h3 class="card-title">Anthura — Kas reinigingsconcept</h3>
+        <p class="card-desc">
+          Idee ontwikkelen voor het veilig schoonmaken van de binnenkant van een glazen kas bij bloemenveredelaar Anthura. Technologisch concept bedacht en technisch getekend.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: het technisch concept dat we hebben ontworpen en gepresenteerd aan de opdrachtgever</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r2', this)"
+                  aria-expanded="false"
+                  aria-controls="r2">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r2" hidden>
+        <p>"Bij Anthura heb ik geleerd hoe je communiceert met een echte opdrachtgever. Het was soms lastig om hun verwachtingen goed te begrijpen — de eerste presentatie was te technisch. Door meer te luisteren en samen te vatten wat de klant écht wil, werd de samenwerking beter. Ik zou de volgende keer eerder een klantinterview houden om requirements helder te hebben."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">Communicatie</span>
+          <span class="refl-tag">Technisch tekenen</span>
+          <span class="refl-tag">Samenwerken</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaart 3: STI Engineering -->
+    <div class="card" data-tags="school plan">
+
+      <div class="card-img">
+        <div class="card-img-placeholder">⚙️ STI Engineering</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-school">School</span>
+          <span class="badge badge-world">Natuur &amp; Techniek · O&amp;O VWO 4</span>
+        </div>
+        <h3 class="card-title">STI Engineering — Productpresentatie</h3>
+        <p class="card-desc">
+          Ontwerpen van een oplossing voor het gemakkelijker presenteren van producten bij STI Engineering. Onderzoek gedaan en een ontwerp uitgewerkt in Blender.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: het onderzoek en de visuele presentatie van het eindontwerp</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r3', this)"
+                  aria-expanded="false"
+                  aria-controls="r3">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r3" hidden>
+        <p>"Bij STI Engineering heb ik geleerd hoe je een ontwerp onderbouwt met onderzoek. Het was mijn eerste keer dat ik zowel onderzoek als 3D-modelleren combineerde. Ik merkte dat ik soms te snel wilde beginnen met modelleren terwijl de onderzoeksfase nog niet klaar was. Volgend project wil ik een duidelijkere planning maken met vaste deadlines per fase."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">Onderzoek</span>
+          <span class="refl-tag">Ontwerpen</span>
+          <span class="refl-tag">Planning</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaart 4: Weer app -->
+    <div class="card" data-tags="personal tech">
+
+      <div class="card-img">
+        <img src="Assets/img/DSC_0170.jpg"
+             alt="Screenshot van de weer-app interface"
+             loading="lazy">
+        <div class="photo-label">Weer-app screenshot</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-school">School</span>
+          <span class="badge badge-world">Informatica · Tech &amp; Code</span>
+        </div>
+        <h3 class="card-title">Weer-app — Buienradar API</h3>
+        <p class="card-desc">
+          Een weer-app gebouwd met HTML, CSS en JavaScript die gebruik maakt van de Buienradar API. De app toont overzichtelijk de weersverwachting met extra functies.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: de werkende API-integratie en het overzichtelijke ontwerp</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r4', this)"
+                  aria-expanded="false"
+                  aria-controls="r4">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r4" hidden>
+        <p>"De weer-app was mijn eerste project met een externe API. Het ophalen van data lukte al snel, maar het netjes tonen van die data kostte meer tijd dan verwacht — JSON structuren begrijpen is een vak apart. Ik ben trots op het eindresultaat en heb er veel van geleerd over asynchrone JavaScript. Volgende keer wil ik error-handling eerder toevoegen."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">JavaScript</span>
+          <span class="refl-tag">API's</span>
+          <span class="refl-tag">HTML &amp; CSS</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaart 5: Ursem Modulair Bouw -->
+    <div class="card" data-tags="school plan">
+
+      <div class="card-img">
+        <div class="card-img-placeholder">🏗️ Ursem Modulair Bouw</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-school">School</span>
+          <span class="badge badge-world">Natuur &amp; Techniek · O&amp;O VWO 4</span>
+        </div>
+        <h3 class="card-title">Ursem Modulair Bouw — Productstorage</h3>
+        <p class="card-desc">
+          Het efficiënter maken van de productopslag bij Ursem door het bieden van een slimme oplossing. Kritisch denken en creatief probleemoplossen stonden centraal.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: de heldere probleemanalyse en het praktische voorstel dat we hebben gedaan</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r5', this)"
+                  aria-expanded="false"
+                  aria-controls="r5">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r5" hidden>
+        <p>"Bij Ursem draaide het om kritisch denken: wat is het echte probleem, niet het symptoom? Die vraag heeft mij geleerd om verder te kijken dan de eerste oplossing. In het begin gingen we te snel naar conclusies. Door meer vragen te stellen aan de opdrachtgever kwamen we tot een betere analyse. Dit neem ik mee naar elk volgend project."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">Kritisch denken</span>
+          <span class="refl-tag">Probleemoplossen</span>
+          <span class="refl-tag">Communicatie</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Kaart 6: Fotografie project -->
+    <div class="card" data-tags="personal photo nature">
+
+      <div class="card-img">
+        <img src="Assets/img/Ieper_1.jpg"
+             alt="Landschapsfoto genomen in Ieper tijdens een fotoproject"
+             loading="lazy">
+        <div class="photo-label">Ieper — landschapsfotografie</div>
+      </div>
+
+      <div class="card-body">
+        <div class="badge-row">
+          <span class="badge badge-personal">Persoonlijk</span>
+          <span class="badge badge-world">Fotografie &amp; Creativiteit</span>
+        </div>
+        <h3 class="card-title">Fotografie — Landschappen &amp; macro</h3>
+        <p class="card-desc">
+          Persoonlijk fotoproject waarbij ik landschappen en macro-onderwerpen fotografeer. Meerdere jaren hof­leverancier voor de familie­kerstkaart.
+        </p>
+        <div class="card-footer">
+          <span class="pride-text">Trots op: de jaarlijkse kerstkaartfoto die de hele familie blij maakt</span>
+          <button class="refl-btn"
+                  onclick="toggleReflectie('r6', this)"
+                  aria-expanded="false"
+                  aria-controls="r6">
+            Reflectie ↓
+          </button>
+        </div>
+      </div>
+
+      <div class="refl-panel" id="r6" hidden>
+        <p>"Fotografie leerde mij kijken — echt kijken. Geduld, compositie, licht: het zijn vaardigheden die ik ook buiten fotografie gebruik. Bij een macro-foto heb je veel geduld nodig voordat je het perfecte moment hebt. Die precisie en het experimenteren met instellingen heeft me ook geholpen bij technisch werk zoals 3D-modelleren."</p>
+        <div class="refl-tags">
+          <span class="refl-tag">Fotografie</span>
+          <span class="refl-tag">Creativiteit</span>
+          <span class="refl-tag">Geduld &amp; precisie</span>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <footer>
+    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
