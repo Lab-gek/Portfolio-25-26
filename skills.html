@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thijmen van Groenestijn — Skills &amp; Competenties</title>
+  <title>Portfolio — Skills</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,127 +11,26 @@
 <body>
 
   <nav class="topbar">
-    <a class="logo" href="index.html">Thijmen van Groenestijn</a>
+    <a href="index.html" class="logo">Portfolio</a>
     <div class="nav-links">
       <a href="index.html">Over mij</a>
-      <a href="opdrachten.html">Opdrachten &amp; projecten</a>
-      <a href="skills.html" class="active">Skills</a>
+      <a href="opdrachten.html">Opdrachten & projecten</a>
+      <a href="skills.html">Skills</a>
       <a href="fotografie.html">Fotografie</a>
       <a href="pop.html">POP</a>
     </div>
   </nav>
 
-  <!-- PAGINAKOP -->
   <header class="page-hero">
     <p class="page-eyebrow">Wat ik kan</p>
-    <h1 class="page-title">Skills &amp; Competenties</h1>
-    <p class="page-desc">Een visueel overzicht van mijn technische vaardigheden, creatieve competenties en persoonlijke kwaliteiten.</p>
+    <h1 class="page-title">Skills & competenties</h1>
+    <p class="page-desc">Een overzicht van mijn vaardigheden — met links naar de projecten die ze bewijzen.</p>
   </header>
 
-  <!-- SKILLS GRID (Criterium 5) -->
-  <section aria-label="Technische skills">
-    <h2 class="section-title">Technische skills</h2>
-    <div class="skills-grid">
+  <!-- Competentieraster — gevuld vanuit data.js → skills -->
+  <div class="skills-grid" id="skills-grid"></div>
 
-      <div class="skill-card">
-        <div class="skill-icon">🎨</div>
-        <div class="skill-name">Blender / 3D-modelleren</div>
-        <div class="skill-desc">Gebouwen en objecten modelleren, rendering, basisanimaties. Gebruikt bij NRG Pallas en STI Engineering.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 70%;"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">💻</div>
-        <div class="skill-name">HTML &amp; CSS</div>
-        <div class="skill-desc">Zelf websites bouwen en opmaken. Basis van dit portfolio én de weer-app.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 75%;"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">⚡</div>
-        <div class="skill-name">JavaScript</div>
-        <div class="skill-desc">Interactie en logica op webpagina's. API's aanroepen, DOM manipuleren. Geleerd via de weer-app.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 60%;"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">✏️</div>
-        <div class="skill-name">Technisch tekenen</div>
-        <div class="skill-desc">Technische tekeningen maken van ontwerpen. Toegepast bij Anthura en STI Engineering.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 65%;"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">📷</div>
-        <div class="skill-name">Fotografie</div>
-        <div class="skill-desc">Landschapsfotografie, macro-fotografie, compositie en belichting. Meerdere jaren ervaring.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 80%;"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🔍</div>
-        <div class="skill-name">Onderzoek &amp; analyse</div>
-        <div class="skill-desc">Literatuuronderzoek, interviews met opdrachtgevers, probleemanalyse. Toepasbaar in elk project.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 68%;"></div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- PERSOONLIJKE COMPETENTIES -->
-  <section aria-label="Persoonlijke competenties" style="margin-top: 12px;">
-    <h2 class="section-title">Persoonlijke competenties</h2>
-    <div class="skills-grid">
-
-      <div class="skill-card">
-        <div class="skill-icon">🧩</div>
-        <div class="skill-name">Probleemoplossend denken</div>
-        <div class="skill-desc">Complexe problemen opdelen in kleinere stukken en een werkende oplossing bouwen. Zie: Ursem, Anthura.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 75%; background: var(--teal);"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🤝</div>
-        <div class="skill-name">Samenwerken</div>
-        <div class="skill-desc">Effectief werken in een team, taken verdelen en elkaar aanvullen. Geleerd bij alle O&amp;O-opdrachten.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 80%; background: var(--teal);"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🗓️</div>
-        <div class="skill-name">Planning &amp; organisatie</div>
-        <div class="skill-desc">Deadlines bewaken, taken prioriteren en overzicht bewaren. Ontwikkeld bij evenement-organisatie en O&amp;O.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 70%; background: var(--teal);"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🎺</div>
-        <div class="skill-name">Doorzettingsvermogen</div>
-        <div class="skill-desc">Oefenen, falen en doorgaan — geleerd door muziek spelen in de vereniging en lange fietstochten.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 85%; background: var(--teal);"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">💬</div>
-        <div class="skill-name">Communicatie met opdrachtgevers</div>
-        <div class="skill-desc">Verwachtingen ophalen, samenvatten en terugkoppelen. Geoefend bij Anthura, NRG Pallas en STI.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 65%; background: var(--teal);"></div></div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-icon">🌱</div>
-        <div class="skill-name">Zelfreflectie</div>
-        <div class="skill-desc">Terugkijken op wat goed ging en wat beter kan, en dat ook concreet opschrijven en toepassen.</div>
-        <div class="skill-level"><div class="skill-level-bar" style="width: 72%; background: var(--teal);"></div></div>
-      </div>
-
-    </div>
-  </section>
-
-  <footer>
-    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
-  </footer>
-
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

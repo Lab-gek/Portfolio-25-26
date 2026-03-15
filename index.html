@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thijmen van Groenestijn — Over mij</title>
+  <title>Portfolio — Over mij</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,110 +11,62 @@
 <body>
 
   <nav class="topbar">
-    <a class="logo" href="index.html">Thijmen van Groenestijn</a>
+    <a href="index.html" class="logo">Portfolio</a>
     <div class="nav-links">
-      <a href="index.html" class="active">Over mij</a>
-      <a href="opdrachten.html">Opdrachten &amp; projecten</a>
+      <a href="index.html">Over mij</a>
+      <a href="opdrachten.html">Opdrachten & projecten</a>
       <a href="skills.html">Skills</a>
       <a href="fotografie.html">Fotografie</a>
       <a href="pop.html">POP</a>
     </div>
   </nav>
 
-  <!-- HERO (Criterium 1 & 2) -->
-  <section class="hero" aria-label="Introductie">
-    <div class="hero-photo-placeholder" aria-hidden="true">T</div>
+  <!-- Hero — gevuld vanuit data.js → about -->
+  <section class="hero">
+    <div id="hero-photo-wrap"></div>
     <div class="hero-text">
-      <p class="page-eyebrow">Over mij</p>
-      <h1 class="hero-name">Thijmen van Groenestijn</h1>
-      <p class="hero-tagline">VWO bovenbouw student · Ontwerper · Fotograaf · Muzikant</p>
-      <p class="hero-quote">
-        "Ik leer het liefst door iets écht te maken — van een 3D-model tot een evenement."
-      </p>
+      <div class="hero-greeting">Welkom op mijn portfolio</div>
+      <h1 class="hero-name" id="hero-name"></h1>
+      <p class="hero-tagline" id="hero-tagline"></p>
+      <div class="hero-tags">
+        <span class="badge badge-personal">Persoonlijk</span>
+        <span class="badge badge-school">School</span>
+      </div>
     </div>
   </section>
 
-  <!-- QUICK FACTS (Criterium 2) -->
-  <div class="quick-facts" aria-label="Snelle feiten">
-    <div class="fact-card">
-      <div class="fact-label">School</div>
-      <div class="fact-value">VWO bovenbouw</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">Profiel</div>
-      <div class="fact-value">Natuur &amp; Techniek</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">Vakken</div>
-      <div class="fact-value">Informatica · O&amp;O · Lifestyle &amp; Design</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">Woonplaats</div>
-      <div class="fact-value">Nederland</div>
-    </div>
-    <div class="fact-card">
-      <div class="fact-label">Ambitie</div>
-      <div class="fact-value">Techniek &amp; Ontwerp combineren</div>
-    </div>
+  <hr class="section-divider">
+
+  <!-- Quick facts — gevuld vanuit data.js → about.quickFacts -->
+  <div class="about-strip">
+    <div class="strip-label">Snel over mij</div>
+    <div class="quick-facts" id="quick-facts"></div>
   </div>
 
-  <!-- WIE BEN IK (Criterium 2) -->
-  <div style="padding: 0 28px; max-width: 720px; margin-bottom: 40px;">
-    <p class="page-eyebrow" style="margin-bottom: 8px;">Wie ben ik?</p>
-    <p style="font-size: 15px; color: var(--text); line-height: 1.75;">
-      Ik ben Thijmen, een VWO-student die van aanpakken houdt. Of het nu gaat om het 3D-modelleren van een museumgebouw, het bouwen van een weer-app, of het organiseren van schoolevenementen — ik zoek altijd de praktische aanpak. Ik hou ervan om abstracte ideeën om te zetten naar iets tastbaars: een model, een website, een plan.
-    </p>
-    <p style="font-size: 15px; color: var(--text); line-height: 1.75; margin-top: 12px;">
-      Buiten school fotografeer ik graag landschappen en macro-onderwerpen, speel ik trompet in de plaatselijke muziekvereniging en fiets ik regelmatig lange afstanden door de natuur. Die combinatie van techniek, creativiteit en buiten zijn maakt mij wie ik ben.
-    </p>
+  <!-- Citaat — gevuld vanuit data.js → about.quote -->
+  <p class="hero-quote" id="hero-quote"></p>
+
+  <!-- Wie ben ik? — gevuld vanuit data.js → about.aboutText -->
+  <div class="about-strip">
+    <div class="strip-label">Wie ben ik?</div>
+    <div id="about-text" style="font-size: 15px; color: var(--text); line-height: 1.75;"></div>
   </div>
 
-  <!-- HOBBIES (Criterium 2) -->
-  <h2 class="section-title">Hobbies &amp; interesses</h2>
-  <div class="hobbies-grid">
-    <div class="hobby-card">
-      <div class="hobby-title">🎨 Blender / 3D Modelleren</div>
-      <div class="hobby-desc">Experimenteren met verschillende onderdelen van 3D-modelleren en ontwerpen.</div>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-title">📷 Fotografie</div>
-      <div class="hobby-desc">Landschappen en familie — al een paar jaar hof­leverancier voor de familie­kerstkaart.</div>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-title">🚴 Fietsen</div>
-      <div class="hobby-desc">Lange ritten door de natuur om op te laden en nieuwe ideeën op te doen.</div>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-title">🏊 Zwemmen</div>
-      <div class="hobby-desc">Twee keer per week naar het zwembad — gewoon lekker bewegen.</div>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-title">🎉 Evenementen</div>
-      <div class="hobby-desc">De afgelopen jaren veel plezier gevonden in het mee-organiseren van schoolevenementen.</div>
-    </div>
-    <div class="hobby-card">
-      <div class="hobby-title">🎺 Muziek spelen</div>
-      <div class="hobby-desc">Trompet spelen in de lokale muziekvereniging en daar een paar keer per jaar mee optreden.</div>
-    </div>
+  <!-- Hobbies — gevuld vanuit data.js → about.hobbies -->
+  <div class="about-strip">
+    <div class="strip-label">Hobbies & interesses</div>
+    <div class="hobbies-grid" id="hobbies-grid"></div>
   </div>
 
-  <!-- FOTO TEASER -->
-  <h2 class="section-title">Eigen foto's</h2>
-  <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0 28px 60px;">
-    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
-      <img src="Assets/img/Ieper_1.jpg" alt="Foto van Ieper" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-    </a>
-    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
-      <img src="Assets/img/DSC_0170.jpg" alt="Macro fotografie" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-    </a>
-    <a href="fotografie.html" style="display: block; border-radius: 12px; overflow: hidden; height: 180px; transition: transform .15s;">
-      <img src="Assets/img/DSC_0680.jpg" alt="Landschapsfoto" style="width:100%; height:100%; object-fit:cover;" loading="lazy">
-    </a>
+  <hr class="section-divider">
+
+  <!-- Foto teaser — gevuld vanuit data.js → about.photoTeaser -->
+  <div class="photo-teaser">
+    <div class="strip-label">Eigen foto's</div>
+    <div class="teaser-grid" id="photo-teaser"></div>
   </div>
 
-  <footer>
-    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
-  </footer>
-
+  <script src="data.js"></script>
+  <script src="script.js"></script>
 </body>
 </html>

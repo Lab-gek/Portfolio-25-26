@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thijmen van Groenestijn — POP</title>
+  <title>Portfolio — POP</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;1,400&family=DM+Sans:opsz,wght@9..40,400;9..40,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
@@ -11,221 +11,26 @@
 <body>
 
   <nav class="topbar">
-    <a class="logo" href="index.html">Thijmen van Groenestijn</a>
+    <a href="index.html" class="logo">Portfolio</a>
     <div class="nav-links">
       <a href="index.html">Over mij</a>
-      <a href="opdrachten.html">Opdrachten &amp; projecten</a>
+      <a href="opdrachten.html">Opdrachten & projecten</a>
       <a href="skills.html">Skills</a>
       <a href="fotografie.html">Fotografie</a>
-      <a href="pop.html" class="active">POP</a>
+      <a href="pop.html">POP</a>
     </div>
   </nav>
 
-  <!-- PAGINAKOP -->
   <header class="page-hero">
-    <p class="page-eyebrow">Persoonlijk OntwikkelingsPlan</p>
-    <h1 class="page-title">POP — Leerdoelen</h1>
-    <p class="page-desc">Mijn persoonlijke leerdoelen voor dit schooljaar, uitgewerkt als SMART-kaarten met voortgang en reflectie.</p>
+    <p class="page-eyebrow">Persoonlijk ontwikkelingsplan</p>
+    <h1 class="page-title">Leerdoelen & reflectie</h1>
+    <p class="page-desc">Mijn SMART-leerdoelen per periode — met voortgang en eerlijke reflectie.</p>
   </header>
 
-  <!-- POP KAARTEN (Criterium 7 & 9) -->
-  <div class="pop-grid">
+  <!-- POP kaarten — gevuld vanuit data.js → leerdoelen -->
+  <div class="pop-grid" id="pop-grid"></div>
 
-    <!-- Leerdoel 1 -->
-    <div class="pop-card">
-      <div class="pop-header">
-        <div>
-          <div class="pop-num">Leerdoel 1</div>
-          <h3 class="pop-title">Beter worden in technisch tekenen en CAD</h3>
-        </div>
-        <div class="ring-wrap">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-label="Voortgang 65%">
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#EDE8E1" stroke-width="4"/>
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#D85A30" stroke-width="4"
-              stroke-dasharray="131.9"
-              stroke-dashoffset="46.2"
-              stroke-linecap="round"
-              transform="rotate(-90 26 26)"/>
-          </svg>
-          <span class="ring-label">65%</span>
-          <div class="ring-status">In progress</div>
-        </div>
-      </div>
-
-      <div class="smart-grid">
-        <div class="smart-cell">
-          <div class="smart-letter">S</div>
-          <div class="smart-name">Specifiek</div>
-          <div class="smart-text">Ik wil leren werken met een CAD-programma (Fusion 360) om technische modellen nauwkeuriger te maken dan in Blender.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">M</div>
-          <div class="smart-name">Meetbaar</div>
-          <div class="smart-text">Ik heb minimaal 3 technische tekeningen gemaakt in Fusion 360 en één eindproduct gepresenteerd.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">A</div>
-          <div class="smart-name">Acceptabel</div>
-          <div class="smart-text">Technisch tekenen is essentieel voor mijn O&amp;O-opdrachten en mijn toekomstige ambities in techniek en ontwerp.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">R</div>
-          <div class="smart-name">Realistisch</div>
-          <div class="smart-text">Fusion 360 is gratis beschikbaar voor studenten. Ik kan online tutorials volgen naast mijn schoolwerk.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">T</div>
-          <div class="smart-name">Tijdgebonden</div>
-          <div class="smart-text">Einde van het tweede trimester — vóór 1 februari 2026.</div>
-        </div>
-      </div>
-
-      <button class="reflect-bar"
-              onclick="togglePopReflectie('pop-r1', this)"
-              aria-expanded="false"
-              aria-controls="pop-r1">
-        <span>Reflectie — hoe gaat het?</span>
-        <span class="refl-arrow">▾</span>
-      </button>
-      <div class="refl-panel" id="pop-r1" hidden>
-        <p>"Ik ben begonnen met tutorials voor Fusion 360 en heb al mijn eerste onderdeel getekend. Het is heel anders dan Blender — meer gefocust op maten en constraints. In het begin was dat frustrerend, maar ik begin het systeem te begrijpen. Ik merk dat mijn technische tekeningen van school mij helpen om sneller de logica te begrijpen. Ik wil voor februari nog twee echte projectonderdelen tekenen."</p>
-      </div>
-    </div>
-
-    <!-- Leerdoel 2 -->
-    <div class="pop-card">
-      <div class="pop-header">
-        <div>
-          <div class="pop-num">Leerdoel 2</div>
-          <h3 class="pop-title">Verbeteren van mijn communicatie met opdrachtgevers</h3>
-        </div>
-        <div class="ring-wrap">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-label="Voortgang 80%">
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#EDE8E1" stroke-width="4"/>
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#D85A30" stroke-width="4"
-              stroke-dasharray="131.9"
-              stroke-dashoffset="26.4"
-              stroke-linecap="round"
-              transform="rotate(-90 26 26)"/>
-          </svg>
-          <span class="ring-label">80%</span>
-          <div class="ring-status">Bijna klaar</div>
-        </div>
-      </div>
-
-      <div class="smart-grid">
-        <div class="smart-cell">
-          <div class="smart-letter">S</div>
-          <div class="smart-name">Specifiek</div>
-          <div class="smart-text">Ik wil leren hoe je een effectief klantinterview houdt en hoe je requirements helder opschrijft vóór je begint met ontwerpen.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">M</div>
-          <div class="smart-name">Meetbaar</div>
-          <div class="smart-text">Bij elk O&amp;O-project houd ik minimaal één structured interview en maak ik een requirements-lijst die de opdrachtgever goedkeurt.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">A</div>
-          <div class="smart-name">Acceptabel</div>
-          <div class="smart-text">Bij Anthura merkte ik dat miscommunicatie veel tijd kostte. Betere communicatie levert direct een beter eindproduct op.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">R</div>
-          <div class="smart-name">Realistisch</div>
-          <div class="smart-text">Ik heb al ervaring met presenteren. Een structured interview leren is één extra stap die goed te oefenen is.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">T</div>
-          <div class="smart-name">Tijdgebonden</div>
-          <div class="smart-text">Toepassen bij het eerstvolgende O&amp;O-project — uiterlijk einde schooljaar 2025–2026.</div>
-        </div>
-      </div>
-
-      <button class="reflect-bar"
-              onclick="togglePopReflectie('pop-r2', this)"
-              aria-expanded="false"
-              aria-controls="pop-r2">
-        <span>Reflectie — hoe gaat het?</span>
-        <span class="refl-arrow">▾</span>
-      </button>
-      <div class="refl-panel" id="pop-r2" hidden>
-        <p>"Dit leerdoel gaat goed. Bij het NRG Pallas project heb ik bewust aan het begin een lijst gemaakt met vragen voor de opdrachtgever. Dat hielp enorm — we hadden na het eerste gesprek al een duidelijk beeld van de verwachtingen. De volgende stap is ook leren omgaan met tegenstrijdige wensen van opdrachtgevers, want dat heb ik nog niet meegemaakt."</p>
-      </div>
-    </div>
-
-    <!-- Leerdoel 3 -->
-    <div class="pop-card">
-      <div class="pop-header">
-        <div>
-          <div class="pop-num">Leerdoel 3</div>
-          <h3 class="pop-title">Verdiepen in JavaScript en webontwikkeling</h3>
-        </div>
-        <div class="ring-wrap">
-          <svg width="52" height="52" viewBox="0 0 52 52" aria-label="Voortgang 50%">
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#EDE8E1" stroke-width="4"/>
-            <circle cx="26" cy="26" r="21"
-              fill="none" stroke="#D85A30" stroke-width="4"
-              stroke-dasharray="131.9"
-              stroke-dashoffset="65.95"
-              stroke-linecap="round"
-              transform="rotate(-90 26 26)"/>
-          </svg>
-          <span class="ring-label">50%</span>
-          <div class="ring-status">In progress</div>
-        </div>
-      </div>
-
-      <div class="smart-grid">
-        <div class="smart-cell">
-          <div class="smart-letter">S</div>
-          <div class="smart-name">Specifiek</div>
-          <div class="smart-text">Ik wil meer leren over JavaScript — met name asynchrone code (fetch, async/await) en het werken met APIs.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">M</div>
-          <div class="smart-name">Meetbaar</div>
-          <div class="smart-text">Ik bouw minimaal twee webprojecten waarbij ik een externe API gebruik en foutafhandeling heb ingebouwd.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">A</div>
-          <div class="smart-name">Acceptabel</div>
-          <div class="smart-text">Webontwikkeling is een vaardigheid die ik ook na school kan gebruiken — voor projecten, hobby's en mogelijk een studie.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">R</div>
-          <div class="smart-name">Realistisch</div>
-          <div class="smart-text">Ik heb al een basis met HTML/CSS/JS van de weer-app. Verdieping is de logische volgende stap.</div>
-        </div>
-        <div class="smart-cell">
-          <div class="smart-letter">T</div>
-          <div class="smart-name">Tijdgebonden</div>
-          <div class="smart-text">Vóór het einde van het schooljaar — juni 2026.</div>
-        </div>
-      </div>
-
-      <button class="reflect-bar"
-              onclick="togglePopReflectie('pop-r3', this)"
-              aria-expanded="false"
-              aria-controls="pop-r3">
-        <span>Reflectie — hoe gaat het?</span>
-        <span class="refl-arrow">▾</span>
-      </button>
-      <div class="refl-panel" id="pop-r3" hidden>
-        <p>"Ik ben halverwege dit leerdoel. De weer-app was mijn eerste stap, en dit portfolio is de tweede — hier heb ik voor het eerst bewust met CSS-variabelen, grid-layouts en gedeelde bestanden gewerkt. Async/await begrijp ik nu beter dan een jaar geleden, maar ik wil het nog meer in de praktijk toepassen. Mijn volgende project wil ik iets bouwen met een API die ik zelf kies."</p>
-      </div>
-    </div>
-
-  </div>
-
-  <footer>
-    <p>Thijmen van Groenestijn · Portfolio 2025–2026</p>
-  </footer>
-
+  <script src="data.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
