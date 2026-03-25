@@ -27,7 +27,7 @@ const PORTFOLIO_DATA = {
         ],
 
         hobbies: [
-            { icon: "🎨", title: "Blender / 3D Modelleren", desc: "Experimenteren met verschillende onderdelen van 3D-modelleren en ontwerpen." },
+            { icon: "🎨", title: "Blender / 3D Modelleren", desc: "Experimenteren met verschillende onderdelen van Blender. Onderandere animatie" },
             { icon: "📷", title: "Fotografie", desc: "Landschappen en familie — al een paar jaar hof­leverancier voor de familie­kerstkaart." },
             { icon: "🚴", title: "Fietsen", desc: "Lange ritten door de natuur om op te laden en nieuwe ideeën op te doen." },
             { icon: "🏊", title: "Zwemmen", desc: "Twee keer per week naar het zwembad — gewoon lekker bewegen." },
@@ -39,6 +39,7 @@ const PORTFOLIO_DATA = {
             { src: "Assets/img/Ieper_1.jpg", alt: "Foto van Ieper" },
             { src: "Assets/img/DSC_0170.jpg", alt: "Macro fotografie" },
             { src: "Assets/img/DSC_0680.jpg", alt: "Landschapsfoto" },
+            
         ],
     },
 
@@ -46,11 +47,11 @@ const PORTFOLIO_DATA = {
         {
             id: "p1",
             type: "school",
-            tags: ["school", "nature", "plan"],
-            world: "Lifestyle & Design · O&O VWO 5",
-            title: "NRG Pallas — Museum ontwerp",
+            tags: ["school", "nature", "plan", "Beta Wereld: Lifestyle & Design"],
+            world: "Beta Wereld: Lifestyle & Design · Klas: O&O VWO 5",
+            title: " NRG Pallas — Herontwerp",
             description: "Ontwerpen en 3D-modelleren van een museum voor de NRG Pallas opdracht. Ik leerde nieuwe tools en workflows in Blender en ontdekte de grenzen van het programma voor technische modellen.",
-            photo: "Assets/img/DSC_0680.jpg", // The original had this placeholder URL
+            photo: "Assets/img/Petten-export-portfolio.png",
             photoLabel: "3D-model in Blender",
             photoAlt: "3D-model van het NRG Pallas museum in Blender",
             proudOf: "het gedetailleerde 3D-model dat ik zelfstandig heb gebouwd",
@@ -61,15 +62,15 @@ const PORTFOLIO_DATA = {
             id: "p2",
             type: "school",
             tags: ["school", "nature", "plan"],
-            world: "Natuur & Techniek · O&O VWO 4",
+            world: "Natuur & Techniek · O&O VWO 5",
             title: "Anthura — Kas reinigingsconcept",
             description: "Idee ontwikkelen voor het veilig schoonmaken van de binnenkant van een glazen kas bij bloemenveredelaar Anthura. Technologisch concept bedacht en technisch getekend.",
             photo: "",
             placeholder: "🌷 Anthura",
             photoLabel: "Concept",
             photoAlt: "Anthura concept",
-            proudOf: "het technisch concept dat we hebben ontworpen en gepresenteerd aan de opdrachtgever",
-            reflection: "Bij Anthura heb ik geleerd hoe je communiceert met een echte opdrachtgever. Het was soms lastig om hun verwachtingen goed te begrijpen — de eerste presentatie was te technisch. Door meer te luisteren en samen te vatten wat de klant écht wil, werd de samenwerking beter. Ik zou de volgende keer eerder een klantinterview houden om requirements helder te hebben.",
+            proudOf: "Het technisch concept dat we hebben ontworpen en gepresenteerd aan de opdrachtgever",
+            reflection: "Met Anthura heb ik geleerd hoe je communiceert met een echte opdrachtgever. Het was soms lastig om hun verwachtingen goed te begrijpen — de eerste presentatie was te technisch. Door meer te luisteren en samen te vatten wat de klant écht wil, werd de samenwerking beter. Ik zou de volgende keer eerder een klantinterview houden om requirements helder te hebben.",
             skills: ["Communicatie", "Technisch tekenen", "Samenwerken"],
         },
         {
@@ -129,6 +130,20 @@ const PORTFOLIO_DATA = {
             proudOf: "de jaarlijkse kerstkaartfoto die de hele familie blij maakt",
             reflection: "Fotografie leerde mij kijken — echt kijken. Geduld, compositie, licht: het zijn vaardigheden die ik ook buiten fotografie gebruik. Bij een macro-foto heb je veel geduld nodig voordat je het perfecte moment hebt. Die precisie en het experimenteren met instellingen heeft me ook geholpen bij technisch werk zoals 3D-modelleren.",
             skills: ["Fotografie", "Creativiteit", "Geduld & precisie"],
+        },
+        {
+            id: "p7",
+            type: "school",
+            tags: ["school", "Ontwerp"],
+            world: "Beta Wereld: Market & Money · Klas: O&O VWO 4",
+            title: "Action - Concept ontwikkeling",
+            description: "",
+            photo: "Assets/img/Petten-export-portfolio.png",
+            photoLabel: "",
+            photoAlt: "",
+            proudOf: "",
+            reflection: "",
+            skills: ["Ontwerp", "Creativiteit", "Samenwerken"],
         }
     ],
 

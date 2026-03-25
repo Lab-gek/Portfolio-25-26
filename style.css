@@ -152,7 +152,7 @@ body {
   transition: all .3s ease;
 }
 .filter-btn:hover  { border-color: var(--coral); color: var(--text); }
-.filter-btn.active { background: var(--text); color: #fff; border-color: var(--text); }
+.filter-btn.active { background: var(--text); color: #27a3e6; border-color: var(--text); }
 
 /* ════════════════════════════════════════
    KAARTGRID
